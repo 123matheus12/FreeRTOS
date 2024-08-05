@@ -69,6 +69,8 @@ double getTemperature() {
   return (Temp + BIAS);  // Retornando a temperatura em Celsius
 }
 
+// Task para ler e calcular o gradiente de temperatura
+
 void readAndCalculateTask(void *pvParameters) {
   for (;;) {
     // Lê a temperatura do termistor
@@ -95,6 +97,8 @@ void readAndCalculateTask(void *pvParameters) {
     vTaskDelay(pdMS_TO_TICKS(1000));
   }
 }
+
+// Task para mostrar o gráfico de temperatura e o gradiente na tela OLED de 0.9"
 
 void displayTask(void *pvParameters) {
   // Inicializa o display
@@ -158,6 +162,8 @@ void displayTask(void *pvParameters) {
   }
 }
 
+// Task para controlar o Coller por meio de um PID
+
 void coolerControlTask(void *pvParameters) {
   // Configura o pino do cooler
   pinMode(COOLER_PIN, OUTPUT);
@@ -206,5 +212,5 @@ void setup() {
 }
 
 void loop() {
-  // O loop principal do Arduino fica vazio quando usamos FreeRTOS
+  // pass
 }
